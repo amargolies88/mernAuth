@@ -5,7 +5,10 @@
   "proxy": "http://localhost:3001",
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "concurrently"
+    "dev": "concurrently \"npm run startserver\" \"npm run startclient\"",
+    "startserver": "nodemon ./bin/www",
+    "startclient": "npm start --prefix client",
+    "install": "cd client && npm install"
   },
   "dependencies": {
     "concurrently": "^5.2.0",
