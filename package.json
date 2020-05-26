@@ -11,7 +11,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
     "start:prod": "node ./bin/www",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "start:dev": "concurrently \"npm run startserver\" \"npm run startclient\"",
     "client": "cd client && npm run start",
     "seedAll": "node scripts/seedDB.js && node scripts/seedAdminKeys.js",
     "seedPets": "node scripts/seedDB.js",
