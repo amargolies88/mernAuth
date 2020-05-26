@@ -3,13 +3,22 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "dev": "concurrently \"npm run startserver\" \"npm run startclient\"",
     "startserver": "nodemon ./bin/www",
     "startclient": "npm start --prefix client",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "start:prod": "node ./bin/www",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seedAll": "node scripts/seedDB.js && node scripts/seedAdminKeys.js",
+    "seedPets": "node scripts/seedDB.js",
+    "seedKeys": "node scripts/seedAdminKeys.js",
+    "server": "nodemon server.js",
+    "alanclient": "npm start --prefix client",
+    "alanaws": "concurrently \"npm run alanserver\" \"npm run alanclient\""
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
