@@ -7,7 +7,9 @@
     "dev": "concurrently \"npm run startserver\" \"npm run startclient\"",
     "startserver": "nodemon ./bin/www",
     "startclient": "npm start --prefix client",
-    "install": "cd client && npm install"
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
