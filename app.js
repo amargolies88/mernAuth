@@ -1,3 +1,4 @@
+require("dotenv").config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -37,7 +38,7 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-mongoose.connect("mongodb://localhost:27017/mernAuthDB", { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://admin:g0atf4c3@ds347665.mlab.com:47665/heroku_bw7fbnmz", { useNewUrlParser: true, useUnifiedTopology: true }, () => {
   console.log('connected to mongoDB: mernAuthDB');
 });
 
