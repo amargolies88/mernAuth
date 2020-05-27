@@ -9,7 +9,9 @@
     "startclient": "npm start --prefix client",
     "install": "cd client && npm install",
     "start:prod": "node app.js",
-    "start:dev": "concurrently \"npm run startserver\" \"npm run startclient\""
+    "start:dev": "concurrently \"npm run startserver\" \"npm run startclient\"",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
   "dependencies": {
     "bcrypt": "^4.0.1",
