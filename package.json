@@ -17,7 +17,7 @@
     "seedAll": "node scripts/seedDB.js && node scripts/seedAdminKeys.js",
     "seedPets": "node scripts/seedDB.js",
     "seedKeys": "node scripts/seedAdminKeys.js",
-    "server": "nodemon server.js",
+    "server": "nodemon ./bin/www",
     "alanclient": "npm start --prefix client",
     "alanaws": "concurrently \"npm run alanserver\" \"npm run alanclient\""
   },
