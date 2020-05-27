@@ -3,6 +3,13 @@ import AuthService from '../Services/AuthService';
 
 export const AuthContext = createContext();
 
+/* 
+What i really want is to deconstruct whats from props and 
+i just want to pull out children so children in this case
+is going to refer to the components that we want to wrap 
+our provider around
+*/
+
 export default ({ children }) => {
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -24,5 +31,4 @@ export default ({ children }) => {
                 </AuthContext.Provider>}
         </div>
     )
-
 }
