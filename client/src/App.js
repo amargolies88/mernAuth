@@ -16,7 +16,7 @@ function App() {
       <Route exact path="/" component={Home} />
       <UnPrivateRoute path="/login" component={Login} />
       <UnPrivateRoute path="/register" component={Register} />
-      <PrivateRoute path="/todos" roles={["user", "admin"]} component={Todos} />
+      <PrivateRoute exact path="/todos" roles={["user", "admin"]} component={Todos} />
       <PrivateRoute path="/admin" roles={["admin"]} component={Admin} />
     </Router>
   );
