@@ -32,7 +32,7 @@ app.use('/user', userRouter);
 // Define all API routes before this runs
 // Send every request to the React app
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/../'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 mongoose.connect(
