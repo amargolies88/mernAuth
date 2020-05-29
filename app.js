@@ -25,8 +25,6 @@ if (process.env.NODE_ENV === "production") {
   console.log('using dev');
 }
 
-
-
 app.use('/user', userRouter);
 
 // Define all API routes before this runs
