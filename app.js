@@ -18,9 +18,11 @@ app.use(cookieParser());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use('/', express.static(path.join(__dirname, '/client/build')));
+  app.use(express.static('client/build'));
+  console.log('using prod');
 } else {
   app.use('/', express.static(path.join(__dirname, 'public')));
+  console.log('using dev');
 }
 
 
@@ -29,9 +31,9 @@ app.use('/user', userRouter);
 
 // Define all API routes before this runs
 // Send every request to the React app
-// app.get("*", function (req, res) {
-//   res.sendFile(path.join(__dirname, './client/index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/../'));
+});
 
 mongoose.connect(
   process.env.MONGODB_URI ||
