@@ -15,11 +15,12 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, '/client/build')));
+} else {
+  app.use(express.static(path.join(__dirname, 'public')));
 }
 
 
@@ -28,9 +29,9 @@ app.use('/user', userRouter);
 
 // Define all API routes before this runs
 // Send every request to the React app
-app.get("*", function (req, res) {
-  res.sendFile(path.join(__dirname, 'public'));
-});
+// app.get("*", function (req, res) {
+//   res.sendFile(path.join(__dirname, './client/index.html'));
+// });
 
 mongoose.connect(
   process.env.MONGODB_URI ||
