@@ -12,15 +12,17 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve up static assets (usually on heroku)
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, '/client/build')));
+}
+
+
 
 app.use('/user', userRouter);
 
